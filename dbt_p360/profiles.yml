@@ -1,0 +1,11 @@
+dbt_p360:
+  outputs:
+    dev:
+      catalog: "{{ env_var('CATALOG') }}"
+      host: "{{ env_var('HOST') }}"
+      http_path: "{{ env_var('HTTP_PATH') }}"
+      schema: raw_rcbc
+      threads: 4
+      token: "{{ env_var('TOKEN') }}"
+      type: databricks
+  target: dev

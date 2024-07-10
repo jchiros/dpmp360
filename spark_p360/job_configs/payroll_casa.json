@@ -1,0 +1,134 @@
+{
+    "schema": {
+        "rec_type": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [0, 1]
+        },
+        "batch_id": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [1, 12]
+        },
+        "batch_date": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [13, 21]
+        },
+        "serial_number": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [21, 26]
+        },
+        "category_of_interface": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [26, 28]
+        },
+        "currency": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [28, 31]
+        },
+        "tran_type": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [31, 32]
+        },
+        "tran_sub_type": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [32, 34]
+        },
+        "tran_date": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [34, 42]
+        },
+        "value_date": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [42, 50]
+        },
+        "initiating_sol": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [50, 55]
+        },
+        "gi_date": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [55, 63]
+        },
+        "tran_amount": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [63, 80]
+        },
+        "act_no": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [80, 96]
+        },
+        "tran_particular": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [96, 296]
+        },
+        "part_tran_type": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [296, 297]
+        },
+        "office_account_placeholder": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [297, 313]
+        },
+        "bank_id": {
+            "datatype": "string",
+            "nullable": true,
+            "substring": [313, 315]
+        },
+        "company_account": {
+            "datatype": "string",
+            "nullable": true
+        },
+        "branch": {
+            "datatype": "string",
+            "nullable": true
+        },
+        "company_code": {
+            "datatype": "string",
+            "nullable": true
+        },
+        "handoff_name": {
+            "datatype": "string",
+            "nullable": false
+        }
+    },
+    "source": {
+        "script": "payroll_casa",
+        "path": "RCBC/PAYROLL/DAILY/{mm}{dd}{yyyy}",
+        "file_pattern": "*.t**",
+        "skip_rows": 2,
+        "skip_footer": 1
+    },
+    "destination": {
+        "schema": "raw_rcbc",
+        "table": "payroll_casa",
+        "load_strategy": "incremental",
+        "partition_col": "existasof",
+        "partition_dtype": "date"
+        },
+    "settings":{
+        "weekends": {
+            "load": false,
+            "replace_by": "latest_snapshot"
+        },
+        "holidays": {
+            "load": false,
+            "replace_by": "latest_snapshot"
+        }
+    }
+}

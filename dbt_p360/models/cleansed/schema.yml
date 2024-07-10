@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: work_rcbc
+    database: "{{env_var('CATALOG')}}" 
+    schema: work_rcbc  
+    tables:
+      - name: stg_payroll_casa
+      - name: stg_payroll_icard

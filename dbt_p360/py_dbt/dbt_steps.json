@@ -1,0 +1,16 @@
+{
+  "steps": {
+    "work": {
+      "jobs": [
+        "stg_payroll_casa"
+      ],
+      "is_all_required": true
+    },
+    "cleansed": {
+      "jobs": [
+        "payroll_casa"
+      ],
+      "is_all_required": true
+    }
+  }
+}
